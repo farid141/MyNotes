@@ -1,0 +1,118 @@
+Nah, kalau **pointer sudah diberi value yang valid (alamat suatu variabel atau memori yang dialokasikan)**, maka `*p` akan memberikan **nilai yang tersimpan di alamat tersebut**.
+
+---
+
+### Contoh 1: Pointer ke variabel biasa
+
+```c
+#include <stdio.h>
+
+int main() {
+    int x = 42;
+    int *p = &x;   // p menyimpan alamat dari x
+
+    printf("Alamat x: %p\n", &x);
+    printf("Isi p (alamat x): %p\n", p);
+    printf("Nilai *p: %d\n", *p);  // ambil nilai di alamat p (yaitu nilai x)
+
+    return 0;
+}
+```
+
+📌 Output kira-kira:
+
+```
+Alamat x: 0x7ffee64b6c1c
+Isi p (alamat x): 0x7ffee64b6c1c
+Nilai *p: 42
+```
+
+👉 Jadi `*p` akan sama dengan `x`.
+
+---
+
+### Contoh 2: Pointer setelah perubahan nilai
+
+```c
+#include <stdio.h>
+
+int main() {
+    int x = 10;
+    int *p = &x;
+
+    printf("Nilai awal x = %d\n", *p);
+
+    *p = 99;   // ubah nilai melalui pointer
+
+    printf("Nilai x setelah *p diubah = %d\n", x);
+
+    return 0;
+}
+```
+
+📌 Output:
+
+```
+Nilai awal x = 10
+Nilai x setelah *p diubah = 99
+```
+
+👉 Perubahan lewat `*p` juga mengubah `x`, karena keduanya mengacu ke lokasi memori yang sama.
+
+---
+
+### Kesimpulan
+
+* Jika `p` **belum diisi alamat valid** → `*p` tidak boleh diakses (undefined behavior).
+* Jika `p` **sudah diisi alamat variabel/memori valid** → `*p` adalah **nilai yang tersimpan di alamat tersebut**, dan bisa dibaca maupun diubah.
+
+---
+
+Mau aku bikinkan **diagram memori sederhana** untuk memperlihatkan hubungan `x`, `p`, dan `*p` biar lebih visual?
+
+Betul sekali 👍
+
+Mari kita telusuri pelan-pelan biar jelas:
+
+---
+
+### Misalnya ada kode:
+
+```c
+int x = 10;
+int *p = &x;
+```
+
+* `x` → variabel bertipe `int`, nilainya `10`.
+* `&x` → alamat memori tempat `x` disimpan.
+* `p` → pointer yang menyimpan alamat `x`.
+
+---
+
+### Hubungan
+
+* `p == &x` ✅ benar, karena `p` menyimpan alamat `x`.
+* `*p == x` ✅ benar, karena `*p` mengambil nilai di alamat yang ditunjuk `p` (yaitu `x`).
+
+---
+
+### Ilustrasi sederhana:
+
+| Nama | Isi (nilai) | Alamat memori |
+| ---- | ----------- | ------------- |
+| `x`  | 10          | `0x100`       |
+| `p`  | `0x100`     | `0x200`       |
+
+* `&x = 0x100`
+* `p = 0x100`
+* `*p = 10`
+
+---
+
+Jadi benar sekali:
+👉 `p` menyimpan **alamat** `x`, artinya `p` dan `&x` bernilai sama.
+👉 Kalau kita cek dengan `printf("%p\n", p);` dan `printf("%p\n", &x);`, hasilnya akan sama.
+
+---
+
+Mau aku tunjukkan contoh kode kecil yang nge-print `p`, `&x`, `*p`, dan `x` biar kelihatan perbandingannya?

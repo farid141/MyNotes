@@ -1,0 +1,7 @@
+Figma
+
+constraints: posisi content terhadap frame, misal jika dibuat constrain left, ketika di-resize dari left maka jarak konten terhadap left tetap dan konten akan bergeser ke kanan
+
+groups: gabungan dari beberapa shape sehingga menjadi komponen
+frame: tempat komponen2 diletakkan serta bisa nested frame.
+section: tempat frame2, biasanya memiliki versi: v1, v2, prototype dll

@@ -1,0 +1,6 @@
+stripe
+
+untuk pembayaran uang international (visa)
+
+1. user klik order
+2. redirect ke web page kita yang mengembalikan session_id stripe, dan data produk detail dll dari server

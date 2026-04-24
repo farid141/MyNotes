@@ -1,0 +1,91 @@
+clerk for authentication
+
+terdapat code generation untuk code FE: react, next dll.
+
+bungkus layout dengan komponen <ClerkProvider/>
+untuk rendering komponen auth checker:
+- <SignedOut/> render children jika not-authenticated
+- <SignedIn/>  render children jika authenticated
+
+komponen:
+- <SignedInButton> mengarahkan ke halaman login clerk
+- <UserButton> untuk dropdown profile, logout, dll
+
+const {userId, redirectSignIn} = auth()
+
+sinkronisasi user clerk:
+gunakan fungsi currentUser() untuk ambil info user dari db clerk
+- menggunakan fungsi pada komponen FE akan mengecek id clerk, jika tidak ada, insert
+- menggunakan websocket
+
+- **Clerk** mainly handles **authentication**: signing up users, signing in users, verifying emails, managing sessions, etc.
+- **Authorization** (specifically **role-permission** based) is about **what a user can do** once they're authenticated: which pages they can access, what actions they can perform.
+
+**By default, Clerk does not fully manage fine-grained permissions or roles.**  
+However, Clerk *does* allow you to extend their user model to include roles, custom attributes, and metadata that you can use for role-permission checks.
+
+---
+
+### Here's the typical approach:
+
+1. **Store user roles/permissions in Clerk's metadata**:
+   - You can use **publicMetadata** or **privateMetadata** fields.
+   - Example:  
+     ```json
+     {
+       "role": "admin",
+       "permissions": ["create_post", "delete_post"]
+     }
+     ```
+
+2. **Assign roles at signup or later**:
+   - After user creation, you update the user's metadata with their role.
+   - Clerk provides admin APIs to modify metadata.
+
+3. **Check roles/permissions in your app**:
+   - When a user makes a request, retrieve their role/permissions from Clerk.
+   - Enforce access based on that information in your frontend or backend.
+
+---
+
+### Simple Code Example
+
+**Setting a role after signup (server-side)**:
+```javascript
+import { clerkClient } from "@clerk/clerk-sdk-node";
+
+await clerkClient.users.updateUserMetadata(userId, {
+  publicMetadata: {
+    role: "admin",
+    permissions: ["create_post", "delete_post"],
+  },
+});
+```
+
+**Checking role in frontend (React + Clerk)**:
+```javascript
+import { useUser } from "@clerk/nextjs";
+
+function Dashboard() {
+  const { user } = useUser();
+  const role = user.publicMetadata.role;
+
+  if (role !== "admin") {
+    return <p>You do not have access.</p>;
+  }
+
+  return <p>Welcome Admin!</p>;
+}
+```
+
+---
+
+### Pro Tips
+- **Public Metadata** is readable by anyone who can access the user object (good for non-sensitive roles).
+- **Private Metadata** is only available server-side (useful for sensitive data).
+- If you need **more advanced control** (like multi-tenancy, user groups, dynamic permissions), you might want to use a **separate authorization system** like **AuthZ** libraries or services (e.g., Casbin, Oso, or your own).
+
+---
+
+Would you like me to show you a **full-stack example** where Clerk is used with a small **role-permission middleware** (say, in Next.js or Express)?  
+It’s pretty clean and really practical! 🚀

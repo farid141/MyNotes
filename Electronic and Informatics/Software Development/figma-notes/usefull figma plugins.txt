@@ -1,0 +1,6 @@
+usefull figma plugins:
+- unsplash
+- lorem ipsum
+- material design icons
+
+plugins bisa diakses pada sebelah menu-bar text

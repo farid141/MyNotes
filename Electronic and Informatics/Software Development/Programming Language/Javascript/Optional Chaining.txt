@@ -1,0 +1,4 @@
+optional chaining: 
+untuk mencegah error ketika mengakses properti objek yang tidak ada, lebih rapi daripada menggunakan if-else
+person={}
+person.address?.province

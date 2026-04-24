@@ -1,0 +1,39 @@
+shadcn
+
+global.css
+file css utama yang mengatur komponen shadcn dengan class-based styling
+
+pewarnaan dengan oklch
+
+L: 0(black) - 1(white)
+C: intensitas warna/saturasi 0(gray)-1(vivid)
+H: warna dari derajat color wheel 0-360
+
+gunakan themes
+shadcn -> themes
+
+library lain
+tweakcn, kita bisa melakukan customisasi:
+- typography (jarak space, radius, )
+
+setelah itu generate css dan timpa @theme-inline, :root dan .dark
+
+
+CVA (Class Variance Authority)
+sebuah fungsi untuk membuat style
+
+const buttonVariants = cva(mainAppliedClass, variants:{
+variant: {
+  customClassName: "appliedClassStyle"
+},
+size: {
+
+}
+})
+
+penggunaannya:
+className={buttonVariants({variant: "customClassName", size: "lg"})}
+
+sebenarnya isi dari variants, hanya berguna sebagai grouping, karena 
+
+untuk mengubah varian spesifik, lebih baik ke appliedClassStyle dengan exclamation mark "!"

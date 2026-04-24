@@ -1,0 +1,11 @@
+menggunakan package net/http
+
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+	n, err := fmt.Fprintf(w, "Hello World") //mencetak ke writer html
+	if err != nil {
+		fmt.Println(err)  //mencetak ke terminal
+	}
+	fmt.Println(fmt.Sprintf("Number of bytes written: %d", n))
+})
+
+_=http.ListenAndServe(":8080", nil)

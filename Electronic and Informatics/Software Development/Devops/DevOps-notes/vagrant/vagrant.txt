@@ -1,0 +1,16 @@
+merupakan sebuah automasi untuk membuat vm
+membutuhkan virtualbox untuk dijalankan 
+
+# vagrantfile
+manage setting in file
+mengganti vm
+provisioning
+
+# simple command
+- vagrant init box-name
+- vagrant up
+- vagrant ssh
+- vagrant destroy
+
+box-name seperti OS yang bisa didapatkan dari vagrant cloud
+https://portal.cloud.hashicorp.com/vagrant/discover/eurolinux-vagrant/centos-stream-9

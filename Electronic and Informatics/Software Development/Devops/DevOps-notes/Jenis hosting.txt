@@ -1,0 +1,9 @@
+Shared hosting: resource server bersama, rawan lemot ketika ada aplikasi lain yang satu server memakan komputasi berat, resiko terhack jika terdapat serangan plikasi lain
+
+VPS hosting: Terisolasi dari web lain, kita bisa request tambah resource
+bisa pakai direct access/cpanel dll
+- unmanage: maintenance mandiri
+- managed: ada layanan maintenance
+
+cloud: memanfaatkan banyak server yang terhubung dalam satu jaringan, aplikasi ita ada di beberapa server fisik, dapat dialihkan ke server lain jika beban terlalu berat. Dapat flexible mengalokasikan resource secara realtime. Memiliki dashboard khusus tergantung penyedia. Bekerja dengan mekanisme virtualisasi server cloud
+Contoh: AWS, Cloud, Azure

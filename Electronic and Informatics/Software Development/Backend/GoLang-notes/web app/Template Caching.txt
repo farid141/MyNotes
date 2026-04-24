@@ -1,0 +1,1 @@
+pada saat mengakses template kita melakukan compile terlebih dahulu kemudian menyajikannya ke client. Dengan caching, kita dapat menyimpan hasil cache dan menyajikannya tanpa compile membuat penyajian yang cepat

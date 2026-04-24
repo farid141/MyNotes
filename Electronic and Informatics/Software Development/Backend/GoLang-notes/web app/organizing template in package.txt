@@ -1,0 +1,11 @@
+kita bisa membuat beberapa file dengan nama package yang sama
+dan menjalankannya secara bersamaan dan file2 tersebut seolah2 akan ada dalam satu file/dapat diakses
+
+file2 yang dapat dipecah dalam membuat web app:
+- main
+- handlers
+- render
+
+ada structure folder konvensional yang digunakan Go, dimana masing2 file tersebut diletakkan di folder terpisah, masing-masing file akan terhubung dengan cara import package.
+
+Setelah mengorganisir project, cara untuk menjalankannya adalah jalankan file main.go

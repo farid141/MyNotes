@@ -1,0 +1,5 @@
+npm i uuid
+
+import {v4 as uuidv4} from "uuid"
+
+then use it as key of FE id state (beneficial for key in mapping component data)

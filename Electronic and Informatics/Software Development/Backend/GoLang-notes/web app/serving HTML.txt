@@ -1,0 +1,6 @@
+file view yang digunakan untuk menyajikan html memiliki ekstensi page.tmpl
+
+package yang digunakan: html/template
+
+parsedTemplate, _ := template.ParseFiles("filename")
+err := parsedTemplate.Execute(w, nill)

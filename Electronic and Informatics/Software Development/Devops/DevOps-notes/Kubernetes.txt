@@ -1,0 +1,12 @@
+Kubernetes
+mencari docker image yang sudah ada di dockerd untuk membuat pod (semacam container) melalui sebuah "file config (YML)".
+
+Tiap pod berinteraksi dengan pod lain melalui 'service' yang bisa dibuat domain, daripada port
+
+Cluster: koleksi nodes dan master untuk memanage mereka
+Node: VM tempat container berjalan
+Pod: container
+Deployment: memastikan Pod berjalan, bisa mereset pod jika crash
+service: url/domain untuk mengakses pod lain
+
+Sebenarnya kita bisa membuat object (node, pod, service, etc) tanpa menggunakan config file. Namun, file ini berguna untuk dokumentasi dan disarankan membuat object melalui file ini.

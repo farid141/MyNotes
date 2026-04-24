@@ -1,0 +1,14 @@
+var =  global
+let = local
+const = local (tidak dapat direassign)
+Const berarti variabel tidak bisa di reassign, tapi bisa dilakukan operasi push(), concat dll
+
+direkomendasikan menggunakan let daripada var. 
+Hal ini dikarenakan var tidak terikat dalam scope
+
+untuk tipe data non-primitive (array, obj), merupakan data yang mutable, dimana ketika kita memodifikasinya seperti menggunakan method push dll, akan memodifikasi variable asli.
+
+Sedangkan untuk primitive, akan menghasilkan variable baru
+
+konversi string ke number bisa dilakukan dengan menambahkan "+" sebelum variable
++variable

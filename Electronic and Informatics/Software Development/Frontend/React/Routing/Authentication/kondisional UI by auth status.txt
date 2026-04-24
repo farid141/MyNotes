@@ -1,0 +1,3 @@
+- menggunakan fungsi dari utils untuk mengambil token
+- gunakan fungsi pada 'loader' pada layout root
+- akses loader menggunakan fungsi use... dengan id layout root

@@ -1,0 +1,10 @@
+firebase
+
+dapat digunaakn sebagai authentikasi untuk proteksi ke firestore/realtime database
+
+1. memilih sign-in providers:
+- native: email/pass, phone, anonim
+- additional: google, fb, play game, GitHub dll
+
+2. Pergi ke dokumentasi bagian REST untuk penggunaan tanpa 3rd library/sdk
+

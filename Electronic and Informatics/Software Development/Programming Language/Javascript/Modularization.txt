@@ -1,0 +1,30 @@
+secara default semua function, variabel dll bisa diakses ketika script tersebut dicantumkan dalam website, walaupun secara sekuensial belum didefinisikan.
+Selain itu, juga ada potensi overwrite fungsi/variabel/class dengan nama yang sama di script lain.
+
+Module dapat membatasi hal tersebut:
+- hal ini dilakukan dengan mengubah type pada tag script menjadi module, daripada type="javascript"
+ketika melakukan export dalam halaman html, kita perlu menjalankan perintah import {class/var/func} from relative_path
+- untuk melakukan export, gunakan keyword export sebelum class/func/var. Selain itu, cara yang mudah adalah meletakkan sekaligus pada export{class/func/var, ...}
+- ketika nama ada nama func/var/class yang sama, dapat menggunakan alias di export/import "import/export ... as ..."
+
+ada 2 jenis export:
+1. export default: bisa diimport dengan nama terserah, tidak perlu mendefinisikan variabel/dll
+2. named export: diimport dengan nama yang didfeinisikan pada saat export, harus dengan {}
+
+dalam satu module, bisa membuat satu default dan beberapa named, tidak boleh beberapa default
+cara importnya: import nama_default {named_export1, named_export2} from ....
+atau import {default as ..., named_export1, named_export2}
+
+mengexport menggunakan named module, dapat mengimport beberapa elemen sekaligus
+import * as ... from ...
+
+aggregating module, import dan export semua modul dengan satu line sekaligus:
+file agregasi:
+export {a,b,c} from ...
+export {e,f,g} from ...
+
+file pemanggil:
+import {a,b,c,d,e,f,g} from file_agregasi
+
+dynamic module loading, meload beberapa modul pada waktu tertentu, ada hubungannya dengan promise
+menggunakan import()

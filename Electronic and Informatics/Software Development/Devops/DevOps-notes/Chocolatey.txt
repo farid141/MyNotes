@@ -1,0 +1,7 @@
+merupakan sebuah tools untuk mempermudah instalasi aplikasi pada windows, seperti pada Linux
+
+instalasi dapat dicek pada
+https://chocolatey.org/install#individual
+
+# beberapa aplikasi yang dapat diinstall:
+https://community.chocolatey.org/packages

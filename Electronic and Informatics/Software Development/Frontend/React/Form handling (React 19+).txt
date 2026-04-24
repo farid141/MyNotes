@@ -1,0 +1,5 @@
+pada fitur react 19+ kita bisa menggunakan form submit lebih mudah.
+
+atritbut action pada form dapat kita isi handler dimana:
+- handler akan secara otomatis prevent default
+- form akan otomatis hilang

@@ -1,0 +1,7 @@
+digunakan untuk membuat variable yang dapat digunakan di seluruh folder project
+pkg/config/config.go
+
+simplenya, buat variable struct yang berisi variable2
+
+Pada course yang disajikan, sangat disaranakn untuk memahami konsep pointer pada Go
+- Dikarenakan menggunakan pass by reference, ketika ada perubahan nilai config, maka di package lain juga ikut berubah, karena menggunakan pass by reference, bukan value

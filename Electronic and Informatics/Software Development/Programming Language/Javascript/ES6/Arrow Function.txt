@@ -1,0 +1,13 @@
+arrow function tanpa {} hanya dapat mengeksekusi dan mengembalikan satu statement 
+apabila statement dibungkus {}, maka akan dieksekusi sebagai fungsi biasa
+
+Arrow Function
+const t = (f)=>console.log(f)
+arrow function diatas akan mengeksekusi mengembalikan nilai dari console.log(f) yang bernilai undefined
+
+const t = (f)=>{
+	console.log(f);
+	console.log(f);
+	console.log(f);
+}
+arrow function diatas akan mengeksekusi semuanya dan tidak mengembalikan apapun

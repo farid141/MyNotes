@@ -1,0 +1,3 @@
+Selain memprotect UI seperti tombol dengan autentikasi, route juga perlu deprotect, agar tidak dapat diakses. 
+
+Caranya adalah dengan membuat loader pada route tersebut yang berisi pengecekan token, jika ada maka bisa akses

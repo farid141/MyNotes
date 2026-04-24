@@ -1,0 +1,2 @@
+for in (obj/arr) akan melakukan iterasi ke key
+for of (obj/arr) akan melakukan iterasi ke value

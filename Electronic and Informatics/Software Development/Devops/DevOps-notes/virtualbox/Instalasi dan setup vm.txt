@@ -1,0 +1,15 @@
+1. Aktifkan vtx
+2. disable beberapa service, buka "turn off and on windows service"
+- 
+
+
+3. Buat vm, tentukan nama, alokasi CPU, RAM, dan storage
+- tentukan disk iso untuk instalasi OS
+- tambahkan network adapter dengan tipe "bridge", hubungkan dengan koneksi host yang memiliki internet
+- aktifkan usb dan mouse
+
+3. b. Pada saat instalasi OS, tentukan network sesuai dengan adapter bridge agar bisa akses SSH
+
+4. akses vm dengan ssh (opsional)
+ketikan perintah 
+ssh username@ipaddress_vm

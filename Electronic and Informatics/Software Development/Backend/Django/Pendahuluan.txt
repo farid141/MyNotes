@@ -1,0 +1,14 @@
+Django Frameworks
+
+fitur:
+- migrasi database untuk table/column dengan python manage.py (mirip php artisan)
+- ORM
+- Admin page (CRUD ke model), http://127.0.0.1:8000/admin/
+- Penulisan router urls.py
+- Secara default terinstall apps/package, INSTALLED APPS
+- interactive Django API python manage.py shell (bisa akses ORM)
+
+beberapa command Django:
+- python manage.py startapp polls, membuat folder polls berisi file aplikasi entitas "polls"
+- python manage.py createsuperuser, membuat user djangoadmin
+- 

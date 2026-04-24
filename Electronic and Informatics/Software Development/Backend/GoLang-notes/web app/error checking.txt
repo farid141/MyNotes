@@ -1,0 +1,4 @@
+error dapat dibuat dengan package errors
+
+pada fungsi validasi atau sejenisnya,kita dapat menggunakan if untuk pengecekan error:
+err := errors.New("error message")

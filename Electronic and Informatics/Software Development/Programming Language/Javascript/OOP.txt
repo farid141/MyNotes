@@ -1,0 +1,14 @@
+javascript:
+secara LOW LEVEL, javascript bukan OOP, tetapi kita dapat menggunakan perilaku yang sama 
+To be more precise, JavaScript is a prototype-based Object Oriented Language, which means it doesn't have classes, rather it defines behaviors using a constructor function and then reuses it using the prototype.
+
+ada 2 cara membuat objek:
+1. dari variabel langsung
+const obj1 = {
+	firstName: "farid",
+	age: "23"
+	info(){
+		console.log(`${this.firstName}, ${this.age} years old`)
+	}
+}
+2. melalui class

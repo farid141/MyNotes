@@ -1,0 +1,9 @@
+relative: mengubah posisi element start dari posisi saat ini
+absolute: mengubah posisi element start dari posisi parent
+sticky: ketika discroll posisi akan tetap, sampai keluar dari viewport
+
+inline: seperti span, ukuran mengikuti konten
+inline-block: seperti span, tetapi ukuran dapat diatur
+
+
+https://www.youtube.com/watch?v=6biMWgD6_JY

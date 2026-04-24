@@ -1,0 +1,6 @@
+pada sistem maxmillian S. Dia menggunakan localstorage untuk menyimpan token pada saat login.
+
+Untuk mengambil data token, dibuat sebuah utils untuk mengakses token dari local storage
+
+Pada saat logout, menghapus token dari localstorage dan redirect
+

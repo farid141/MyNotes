@@ -1,0 +1,8 @@
+CDN: (content delivery network)
+
+Benefit CDN:
+- meletakkan konten kita di datacenter CDN yang terdekat tetapi bukan database
+- proteksi DDoS yang akan membatasi besar request IP address atau mengidentifikasi BOT
+- optimisasi konten ke end-user, menyesuaikan resolusi konten dengan bandwidth user.
+
+Pelajaran yg bisa diambil saat menggunakan CDN dari pihak ke 3 perlu dipantau jika misal linknya tidak aktif.

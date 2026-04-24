@@ -1,0 +1,10 @@
+JavaScript menyediakan beberapa API yang dapat digunakan untuk mengakses beberapa fitur dari web browser:
+
+navigation
+localStorage:
+- getItem(key): menghasilkan json string
+- setItem(key, value): biasanya value: JSON.stringify
+
+JSON:
+- stringify(js obj/array)
+- parse(json string)

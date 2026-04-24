@@ -1,0 +1,13 @@
+berguna untuk membuat code template bersih, karena menggunakan layout dan hanya menuliskan body saja
+
+buat file base.layout.tmpl
+1. wrap keseluruhan file layout dengan {{ define "base" }}
+2. pada beberapa bagian dalam layout, kita definisikan blok untuk css, body, script:
+{{ block "css" .}}
+{{ block "content" .}}
+{{ block "js" .}}
+3. gunakan template pada page yang menggunakan layout tersebut
+{{ template "base"}}
+{{ define "content" }}
+4. pada template.ParseFiles,sertakan base layout juga:
+template.ParseFiles("./templates/" + tmpl, ",/temlpates/base.layout.tmpl")

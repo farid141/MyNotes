@@ -1,0 +1,3 @@
+
+pendefinisian fungsi di dalam fungsi adalah konsep closure pada js
+A closure is a function that captures the variables from its surrounding context.

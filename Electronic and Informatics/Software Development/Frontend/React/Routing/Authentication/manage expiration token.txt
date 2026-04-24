@@ -1,0 +1,6 @@
+sebuah token biasanya memiliki waktu expired untuk menjaga keamanan sebuah aplikasi.
+
+Untuk kasus SPA, hal ini dilakukan dengan:
+1. mencantumkan durasi expired token pada response login semisal 3 jam
+2. menyimpan "timestamp + 3 jam" pada local storage
+3. pada root layout akan dilakukan penghitungan durasi, baik itu ketika web direload (menggunakan perbandingan waktu langsung) ataupun ketika tidak (menggunakan useEffect dengan durasi timestamp)

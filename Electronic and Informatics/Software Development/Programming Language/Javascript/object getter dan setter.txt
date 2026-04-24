@@ -1,0 +1,10 @@
+dalam sebuah objek, biasanya kita mengaksesnya dan membacanya. Pada javascript objek dapat dilakukan dengan 
+
+{
+	get propName(){
+		return ...
+	}
+	set propName(value){
+		this.value = value
+	}
+}
