@@ -1,0 +1,2 @@
+masalah composer update pada laragon ketika mengubah versi php:
+ketika mengganti php development, reload apache pada quick menu

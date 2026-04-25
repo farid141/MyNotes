@@ -1,0 +1,2 @@
+Pada saat binding queue, tentukan exchange, dan arguments.
+Hanya akan mengirimkan ke queue yang mengkonsume exvchange tersebut dan kombinasi headernya

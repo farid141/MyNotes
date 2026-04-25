@@ -1,0 +1,16 @@
+MongoDB akan secara otomatis membuatkan database sesuai dengan nama database yang kita pilih
+Untuk memilih nama database, kita bisa menggunakan perintah “use” diikuti nama database
+
+# Perintah database
+use belajar
+show databases
+
+# Database akan tersimpan (tampil saat dishow) jika didalamnya sudah ada collection/table
+
+# Available methods
+Database Methods	Keterangan
+db.dropDatabase()	Menghapus database
+db.getName()		Mengambil nama database
+db.hostInfo()		Mengambil informasi host tempat mongodb
+db.version()		Mengambil versi database
+db.stats()		Mengambil statistik penggunaan database

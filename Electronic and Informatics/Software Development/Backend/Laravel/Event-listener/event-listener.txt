@@ -1,0 +1,26 @@
+# merupakan observer pattern dalam programming, proses akan termodulisasi. Meningkatkan clean-code.
+
+# Beberapa cara membuat listener:
+1. Otomatis scan berdasarkan tipe Event params pada handle() file listener:
+public function handle(PodcastProcessed|PodcastPublished $event): void
+{
+    // ...
+}
+2. register file-based event-listener pada appServiceProvider boot()
+public function boot(): void
+{
+    Event::listen(
+        PodcastProcessed::class,
+        SendPodcastNotification::class,
+    );
+}
+3. menuliskan closure listener pada AppServiceProvider boot()
+Event::listen('event.*', function (string $eventName, array $data) {
+    // ...
+});
+
+# Mengubah listener menjadi queue
+Secara default, listener dijalankan synchronous (tanpa queue).
+Untuk membuatnya asynchronous, implementasikan ShouldQueue pada listener:
+
+class SendShipmentNotification implements ShouldQueue

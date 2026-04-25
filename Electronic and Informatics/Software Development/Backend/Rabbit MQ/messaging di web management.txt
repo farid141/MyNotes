@@ -1,0 +1,13 @@
+Kita bisa mengirimkan message melalui web management pada bagian queue
+
+# Send message
+Pada saat membuat message, kita menentukan beberapa parameter:
+- Routing Key, informasi routing key yang digunakan untuk jenis Direct Exchange untuk merutekan message ke Queue
+- Headers, informasi tambahkan key-value yang bebas ditambahkan
+- Properties, mirip seperti Headers, namun sudah baku keynya
+- Payload, data yang dikirim oleh Producer
+
+# Get message "get messages"
+dapat menentukan Ack mode:
+- Automatic ack = message akan hilang setelah terbaca (sukses memproses)
+- Requeue = message dipindah ke belakang queue

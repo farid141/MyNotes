@@ -1,0 +1,85 @@
+- after(val), return array only after field with value val sequencially
+- before(val), return array only before field with value val sequencially
+
+- average(), avg of val, error if any index contain non integer
+- max(), 
+- min(),
+- mode(), most appearance
+- median()
+- multiply(val), append duplicate collection val time
+
+- chunk(val), membuat grouping, per-group sejumlah val
+$collection = collect([1, 2, 3, 4, 5, 6, 7])->chunk(4);
+[[1, 2, 3, 4], [5, 6, 7]]
+- collapse(), (opposite to chunk), collapse by 1 level
+
+- except([arr]) except field with value in arr
+- only([arr]) only field with value in arr
+
+combine(arr), make new collection with first collection as key and second as value
+concat(arr), append collection data
+
+some()/contains(val/closure), return true/false check if the collection contain such value
+doesntContain(), opposite to contains
+containsStrict(), has the exact same value
+
+has(key), return true/false if collection has such key
+hasAny(arr) return true/false if at least the collection has key in the arr
+
+count(), length of items
+countBy(), group value and has the key count of value
+
+dump(str, str, ..), like dd but not stopping the program.
+
+diff(arr), return value in original that isnt in arr
+diffKeys(), return item that isnt in original collection
+
+dot(), return structured collection to dot notation key
+
+crossJoin([1,2], []), like joining SQL
+$collection = collect([1, 2])->crossJoin(['a', 'b']);
+ 
+    [
+        [1, 'a'],
+        [1, 'b'],
+        [2, 'a'],
+        [2, 'b'],
+    ] 
+
+duplicates(?val), return array of [ind=>val, ind=>val,] where each item is index and value that is duplicate, or we can limit only result specified val 
+duplicatesStrict(), strict version of duplicates
+
+ensure('datatype/class'), ensure all item of collection is in the data, otherwises throw error	 
+
+every(closure), ensure all items return true in the closure, return true/false
+
+filter(closure) get only index that return true in the closure
+reject(closure) get only index that return false in the closure
+
+forget(arr/str), remove specified item by key
+
+flip() swap value and key
+
+first(?callback), return first item or first item that return true in callback
+firstOrFail, same as first but throw error if no item returned
+firstWhere() same as first with callback
+
+last()
+
+flatMap(), same as map but more simple to modify each value
+flatten(?int), get the deepest value or by specified integer
+
+forPage(2, 3) return page to of 3 grouped origin item
+
+groupBy(val) make new grouped data with key of grouped value
+
+implode('separator'), create string with separator
+
+intersect(arr), return origin that only in the given arr
+intersectAssoc(key=>val), return only the same item from origin collection that has exact same key value of specified params
+intersectByKeys(key=>val), return origin items that has the same key as the given params
+
+isEmpty(), true if given collection is empty array
+isNotEmpty, opposite of isEmpty()
+
+join('separator', 'lastSeparator'), return string with separator

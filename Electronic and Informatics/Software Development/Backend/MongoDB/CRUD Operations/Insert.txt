@@ -1,0 +1,13 @@
+beberapa method yang dapat menambahkan document pada collection:
+- insertOne(document)
+- insertMany([doc1, doc2])
+- operasi update dengan parameter upsert:true:
+
+- updateOne()
+- updateMany()
+- findAndModify()
+- findOneAndUpdate()
+- findOneAndReplace()
+- bulkWrite()
+
+jika document tidak menyertakan _id, maka akan ditambahkan otomatis

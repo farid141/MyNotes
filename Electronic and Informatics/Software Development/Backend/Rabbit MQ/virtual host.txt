@@ -1,0 +1,5 @@
+konsep seperti virtual machine dimana dapat dibuat sistem isolasi agar dapat menjalankan projek berbeda dengan 1 aplikasi rabbit mq saja
+
+Bisa ditambahkan pada menu admin->virtual-host
+
+ketika vh baru dibuat akan ada beberapa exchange yang dibuat untuk vh tersebut

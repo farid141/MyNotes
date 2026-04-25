@@ -1,0 +1,2 @@
+digunakan untuk memberikan kejelasan tipe data dan code editor suggestion pada bahasa loosely-typed seperti js, python, php
+

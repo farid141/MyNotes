@@ -1,0 +1,10 @@
+Membatasi user dalam mengakses aplikasi kita berdasarkan hak akses yang melekat pada user tersebut
+
+digunakan untuk membatasi user dalam melakukan aksi:
+- mengakses view
+- mengedit sebuah data
+- menambah sebuah data
+
+Atau dapat lebih spesifik lagi (base on user attribute):
+- sebuah data dengan company A, hanya dapat diubah apabila user merupakan company A
+- Sebuah bisa saja diakses user jika user merupakan orang yang membuat data tersebut walaupun user sudah bukan dari company A.

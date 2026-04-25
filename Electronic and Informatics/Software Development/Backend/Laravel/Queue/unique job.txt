@@ -1,0 +1,16 @@
+# Job dapat dibuat unik
+agar ketika dispatch dan masih ada job lama yang diproses, tidak ditambahkan ke antrean
+1. implement ShouldBeUnique
+2. Override method uniqueId()
+public function uniqueId(): string
+{
+	return 'my-unique-job';
+}
+
+# Unique jobs require a cache driver that supports locks. Currently, the memcached, redis, dynamodb, database, file, and array cache drivers support atomic locks. In addition, unique job constraints do not apply to jobs within batches.
+
+# Ketika sebuah job fails, maka lock tidak akan ter-release menyebabkan ShouldBeUnique tidak jalan, gunakan
+public function uniqueFor(): int
+{
+    return 60; // The job lock expires in 60 seconds
+}

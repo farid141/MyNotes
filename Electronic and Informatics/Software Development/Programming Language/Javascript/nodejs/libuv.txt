@@ -1,0 +1,1 @@
+berguna untuk berbicara ke banyak proses, dapat dicek di dokumentasi nodejs.org

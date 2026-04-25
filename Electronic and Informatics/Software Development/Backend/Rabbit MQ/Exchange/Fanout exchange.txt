@@ -1,0 +1,2 @@
+Fanout exchange (Broadcast)
+queue yang bind kesana akan mendapatkan pesan, tidak peduli routing message

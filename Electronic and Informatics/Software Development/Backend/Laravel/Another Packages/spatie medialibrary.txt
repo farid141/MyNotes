@@ -1,0 +1,48 @@
+# Mendapatkan semua media dari model, akan mengembalikan collection of Media Object
+$mediaItems = $yourModel->getMedia();
+
+# Media object, memiliki beberapa method & attribut 
+$publicUrl = .getUrl();
+$publicFullUrl = .getFullUrl(); // URL including domain
+$fullPathOnDisk = .getPath();
+$temporaryS3Url = .getTemporaryUrl(Carbon::now()->addMinutes(5));
+
+.name = 'new name';
+.save(); // The new name gets saved.
+
+# Penghapusan gambar
+gambar akan terhapus apabila kita mendelete model yang bersangkutan
+$yourModel->delete();
+Atau manual menggunakan
+$yourModel->clearMediaCollection();
+
+# QUEUE
+ketika menggunakan fitur konversi, secara default pengaturannya menggunakan queue, kita harus menjalankan php artisan:queue agar konversi berjalan. Atau kita tambahkan ->nonQueued(); pada konversi
+
+# Konversi gambar
+Dilakukan seacra otomatis ketika menyimpan file: jpg, png, svg, webp, avif, pdf, mp4 , mov or webm akan disimpan dalam jpg. bisa dicegah dengan format() atau keepOriginalImageFormat() methods. Konversi gambar dilakukan dengan menuliskan 
+public function registerMediaConversions(?Media $media = null): void
+{
+      $this->addMediaConversion('thumb')
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
+
+      $this->addMediaConversion('old-picture')
+            ->sepia()
+            ->border(10, BorderType::Overlay, 'black');
+            
+      $this->addMediaConversion('thumb-cropped')
+      ->crop(400, 400, CropPosition::Center); // Trim or crop the image to the center for specified width and height.
+}
+
+Untuk mendapatkan link hasil konversi dapat dilakukan dengan 
+$media->getUrl('thumb') // the url to the thumbnail
+$media->getUrl('old-picture') // the url to the sepia, bordered version
+
+# menggunakan atribut model untuk menentukan konversi
+->width($this->width)
+->height($this->height);
+
+# Optimasi gambar
+semua gambar yang melalui konversi akan dioptimasi. Jika ingin mencegahnya dapat dengan nonOptimized() pada konversi

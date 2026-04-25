@@ -1,0 +1,8 @@
+Dalam modern fe framework berperan dalam build processnya
+
+# Javascript engine:
+Javascript engine dibuat dari c/c++, paling populer v8
+beberapa JS engine (spidermonkey) tidak mengkonversi ke mesin langsung, tetapi ada layer tambahan untuk menkonversi menjadi bytecode, kemudian ada vm yang menjalankan bytecode tsb
+react native dibuat menggunakan JS engine tersendiri.
+
+Browser2 memiliki JS engine yang berbeda2, tetapi semuanya mematuhi ECMAScript yang bertujuan meningkatkan kompatibilitas di platform lain.

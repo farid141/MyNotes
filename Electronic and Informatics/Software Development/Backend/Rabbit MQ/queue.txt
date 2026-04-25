@@ -1,0 +1,8 @@
+queue/antrean, menyimpan data yang diterima di exchange dan meneruskan ke consumer
+
+queue harus dikonekkan ke exchange terlebih dahulu
+
+beberapa parameter ketika membuat queue:
+- virtual host
+- type: [quorum|classic|stream], direkomendasikan quorum daripada classic
+- arguments: konfigurasi expired, panjang, dll

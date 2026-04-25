@@ -1,0 +1,31 @@
+Redis merupakan penyimpanan pada RAM untuk dapat mengakses data lebih cepat. Dapat diterapkan sebagai tempat penyimpanan untuk fitur session dan cache 
+
+1. Redis untuk cache
+Untuk menghemat komputasi yang mahal seperti reporting, kita dapat menggunakan cache dengan menyimpannya di redis.
+
+use Illuminate\Support\Facades\Cache;
+use App\Models\Product;
+
+// Cache query results for 10 minutes (600 seconds)
+$products = Cache::remember('products.all', 600, function () {
+    return Product::all();
+});
+
+
+melakukan update delete data ketika event terjadi
+use App\Models\Product;
+
+Product::created(function ($product) {
+    Cache::forget('products.all');
+});
+
+Product::updated(function ($product) {
+    Cache::forget('products.all');
+});
+
+Product::deleted(function ($product) {
+    Cache::forget('products.all');
+});
+
+2. Redis untuk session
+Redis dapat berguna untuk session ketika kita mengembangkan sebuah aplikasi 

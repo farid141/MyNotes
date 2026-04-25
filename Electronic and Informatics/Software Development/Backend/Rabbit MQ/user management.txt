@@ -1,0 +1,20 @@
+secara default, user yang ada pada rabbit mq adalah
+username: guest
+password: guest
+
+untuk melakukan publish dan subscribe dari aplikasi lain, diperlukan user untuk mengaksesnya
+
+membuat user:
+- username
+- password
+- tags: kemampuan apa saja yang bisa dilakukan user. Antara lain:
+* none
+* management
+* policy maker
+* monitoring
+* administrator
+
+Setelah dibuat, kita bisa memasukkan authorization pada user tersebut ke virtual host dengan beberapa aksi yang dikelompokkan:
+- configure (membuat, menghapus, mengupdate resource(exchange/queue))
+- write (menulis pesan exchange)
+- read (membaca pesan dari queue)

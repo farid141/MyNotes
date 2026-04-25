@@ -1,0 +1,10 @@
+biasanya karena sebuah sebuah post request yang tidak disertai dengan CSRF token.
+
+Atau karena session sudah habis, bisa diperpanjang di session.php
+
+
+    'lifetime' => env('SESSION_LIFETIME', 120),
+
+    'expire_on_close' => false,
+
+bisa diatur ketika browser ditutup juga

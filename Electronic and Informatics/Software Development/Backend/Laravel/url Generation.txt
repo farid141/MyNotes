@@ -1,0 +1,16 @@
+Laravel menyediakan helper untuk membuat sebuah url dengan parameter yang lebih singkat.
+
+Hal ini kebanyakan digunakan pada saat kita ingin:
+- building links in your templates and API responses
+- generating redirect responses to another part of your application.
+
+Beberapa helper yang dapat digunakan diantaranya:
+- url->query(url_name, params[]): menambahkan base_url pada bagian awal. Dapat diakses dengan facade URL::
+- route(named_route, params[]): harus menggunakan named_route
+- action([HomeController::class, 'method']): membuat url menggunakan controller
+
+More deeper:
+- menggunakan default value berdasarkan user login, /{locale}/ dimana akan menggunakan atribute locale dari user
+	1. Membuat middleware tambahan
+	2. Pastikan prioritas middleware tambahan berada di atas "SubstituteBindings" (bootstrap/app.php)
+- Signed url menambahkan parameter pada url, dan akan divalidasi pada middleware ketika digunakan

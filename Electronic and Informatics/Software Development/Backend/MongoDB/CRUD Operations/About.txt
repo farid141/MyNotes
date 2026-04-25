@@ -1,0 +1,5 @@
+merupakan beberapa operasi data/document pada sebuah collection/database mongodb.
+
+syntax: db.<collection>.<methods>()
+
+Beberapa operasi yang ada akan memiliki kata kunci/keyword yang sama (konsisten) di aplikasi client yang akan mengakses server mongodb.

@@ -1,0 +1,7 @@
+mengatur agar pembuatan exchange/queue langsung menggunakan konfigurasi argument dari policy
+
+bisa dibuat pada admin->policies dengan parameter:
+- name
+- pattern: pemilihan exchange/queue berdasarkan nama dengan regex
+- priority: prioritas jika ada policy yang berbeda yang memenuhi pattern yang sama (semakin besar semakin prioritas)
+- definition: argument yang akan ditambahkan ke exchange/queue tersebut
