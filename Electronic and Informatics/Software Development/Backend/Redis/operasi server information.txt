@@ -1,0 +1,6 @@
+- info, mendapatkan informasi dan statistik server
+- config get <key>, mendapakan konfigurasi 
+
+- client list
+- client id, menampilkan id pada terminal saat ini
+- client kill ip:port

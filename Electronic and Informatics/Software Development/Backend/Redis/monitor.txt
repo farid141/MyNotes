@@ -1,0 +1,1 @@
+melakukan monitoring command dari client yang masuk ke server

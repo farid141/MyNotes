@@ -1,0 +1,19 @@
+secara default, redis sudah menjalankan protected mode hanya bisa diakses dari 127.0.0.1 (localhost).
+
+Untuk memprotect ip selain localhost, dapat menggunakan:
+1. ubah koknfigurasi bind
+bind 192.168...
+2. pastikan fitur nyala
+protected-mode yes
+
+Tetapi jika diterapkan selain localhost, harus mengaktifkan fitur security (autentikasi dan autorisasi/ACL):
+1. Menambahkan user melalui kofig:
+- user default on list_acl
+- user nama_user on list_acl >password
+* user 'default' harus ada
+
+2. mengkoneksikan client:
+auth username password
+
+referensi ACL:
+https://redis.io/docs/management/security/acl/ 

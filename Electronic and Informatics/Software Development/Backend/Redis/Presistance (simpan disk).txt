@@ -1,0 +1,14 @@
+Data pada server redis bisa disimpan, akan tersimpan pada file .dbf
+
+penyimpanan disk dibagi menjadi 2:
+1. secara periodik melalui file konfigurasi:
+
+save 3600 1 300 100 60 10000
+
+dibaca 'simpan jika ...' :
+- 1 data berubah / 1 jam
+- 100 data / 5 menit
+- 10000 data / 1 menit
+
+2. menggunakan command save
+seluruh perintah pada command setelah save akan menyimpan data ke disk

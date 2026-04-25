@@ -1,0 +1,6 @@
+Seperti database relasional, untuk mengamankan sebuah transaksi dimana perintah2 akan dirollback jika ada yang gagal
+
+Beberapa perintah diantaranya:
+- multi
+- exec
+- discard
