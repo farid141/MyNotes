@@ -1,0 +1,11 @@
+Merupakan sebuah fungsi yang menghasilkan nilai kembalian, biasanya kombinasi dari perubahan state.
+
+untuk composition API, tinggal bikin fungsi biasa. Tetapi untuk optimasi, kita bisa mengatur agar hanya dirender ketika state dalam fungsi tersebut berubah saja.
+
+Menggunakan computed
+
+const fullName = computed((prevData)=>{
+return `${firstName} ${lastName}`
+})
+
+# prevData adalah data return dari fungsi tersebut sebelumnya

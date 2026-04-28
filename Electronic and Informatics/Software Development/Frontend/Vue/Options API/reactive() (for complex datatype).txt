@@ -1,0 +1,1 @@
+sama seperti ref(), tetapi ref() khusus untuk satu variable primitive, sedangkan reactive() untuk obj dan array

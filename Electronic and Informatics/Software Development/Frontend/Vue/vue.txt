@@ -1,0 +1,64 @@
+untuk menerapkan data pada komponen root:
+Vue.createApp({
+	data(){
+		return {key:val}
+	},
+	computed(){
+		NavbarClass(){
+			return[]
+		}
+	},
+}).mount('selector');
+
+- data(): disini berisi state INISIAL
+- computed(): berisi variabel yang terevaluasi otomatis ketika dependensi data seperti state dll berubah
+
+
+computed bisa dipadukan dengan model binding untuk menyatakan status disabled atau tidak, atau memfilter sebuah array
+computed:{
+	publishedData = this.data.filter((item)=>item.published!=0)
+}
+<button :disabled="isFormValid">
+
+
+kita dapat mem-passing dan binding data parent ke child menggunakan :attr. Kemudian dalam lingkup komponen tersebut dapat mengaksesnya
+
+props definition berguna untuk membatasi jenis input dan memberikan default value jika tidak ada
+
+
+
+dalam options API, created() berisi statement dipanggil ketika komponen belum ke DOM dan setelah komponen terinisialisasi
+ketika menggunakan data dari API, kita sudah membuat komponen dan mengirimkan propsnya. Padahal hasil dari api belum diterima
+
+
+npm install vue-router
+
+import {createRoute, createWebHashHistory} from vue-router
+buat file router dimana berisi object const router = createRoute();
+export default router
+kemudian import pada main.js dan gunakan plugin route dari file tersebut dengan:
+app.use(router)
+dan gunakan komponen tersebut pada app.vue <router-view>
+setelah menggunakannya maka, url website akan memiliki /#/ sebagai root
+
+secara ototmatis akan menyimpan pages pada local storage? apakah benar?
+pada file untuk mendapatkan dan mimpian data local storage, kita import sebagai $pages di main.js 
+dan import secara global dengan app.config.globalProperties.$pages
+
+pada file app.vue, gunakan komponen router tersebut.
+mengakses urlparams
+pada router, atur props:true
+route:'/:index?'
+mengaksesnya pada view dengan $route.params.index
+
+menyimpan sesuatu secara gloabl:
+app.config.globalProperties.$varName
+menggunakannya pada view: this.$varname
+
+pada saat menggunakan router untuk navigasi halaman, kita menggantikan tag anchor dengan <router-link> dan "href" ke "to"
+pada komponen router-link terdapat atribut "active-class" yang dapat memberikan class pada saat kondisi aktif
+
+nested route: pages/21/edit
+menggunakan field children pada pembuatan route
+children:
+

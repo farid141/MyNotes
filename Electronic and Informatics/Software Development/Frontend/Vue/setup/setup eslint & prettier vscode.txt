@@ -1,0 +1,16 @@
+ESlint merupakan tools yang digunakan untuk memastikan gaya penulisan code yang terjaga dalam projek js
+
+Prettier merupakan sebuah extensi formatter pada vscode agar proses save saat development rapi.
+
+
+1. Gunakan extensi vetur default formatter
+2. Config vetur formatter ke prettier
+3. Ubah eslint ke recomended
+4. Install npm plugin prettier eslint
+5. Tambahkan beberapa extend
+"extends":[
+    "plugin:vue/recommended",
+    "eslint:recommended",
+    "prettier",
+    "prettier/vue"
+]

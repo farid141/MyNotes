@@ -1,0 +1,25 @@
+# Instalasi
+npm install vue-router@next
+"next" berarti versi terkini/latest
+
+# Membuat router ./src/router/index.js
+import {createRouter, createWebHistory}
+
+const routes = [
+	{
+		path: '/',
+		name: 'home',
+		component: Home
+	}
+]
+
+const router = createRouter({
+	history: createWebHistory(),
+	routes: routes	
+})
+
+# pada main.js, mount router dari ./src/router/index.js
+
+# Pada app, tambahkan komponen router-view
+
+# Pada komponen ganti anchor <a> dengan <router-link :to={name: 'routerName', params:{}}>

@@ -1,0 +1,9 @@
+sebuah objek yang berisi beberapa pendefinisian fungsi yang dapat diakses pada template maupun script komponen
+
+methods: {
+    increment() {
+      this.count++
+    }
+  },
+
+tidak boleh ditulis dengan arrow function
