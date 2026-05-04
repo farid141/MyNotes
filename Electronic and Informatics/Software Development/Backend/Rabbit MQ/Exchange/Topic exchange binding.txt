@@ -1,0 +1,16 @@
+Saat Queue melakukan Binding ke Topic Exchange, kita bisa membuat routing key menggunakan tanda :
+* (star), digunakan untuk satu kata
+# (hash), digunakan untuk nol atau lebih kata
+
+Misal customers.event.*, artinya bisa untuk routing key:
+- customers.event.new
+- customers.event.update
+- customers.event.delete
+
+Misal customers.#, artinya bisa untuk routing key:
+- customers.a
+- customers.a.b
+- customers.a.b.c
+
+Misal *.event.*, artinya bisa untuk customers.event.a, sellers.event.b
+Misal #, artinya bisa untuk semua routing

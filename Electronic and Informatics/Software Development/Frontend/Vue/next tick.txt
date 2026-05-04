@@ -1,0 +1,12 @@
+async function increment() {
+  count.value++
+
+  // DOM not yet updated
+  console.log(document.getElementById('counter').textContent) // 0
+
+  await nextTick()
+  // DOM is now updated
+  console.log(document.getElementById('counter').textContent) // 1
+}
+
+fungsi harus dibuat promise. ketika baris next tick dieksekusi, render berjalan, setelah render seslesai akan lanjut ke line selanjutnya

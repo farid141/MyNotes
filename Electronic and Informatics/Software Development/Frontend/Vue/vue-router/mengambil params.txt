@@ -1,0 +1,14 @@
+import {usePage} from 'vue-router'
+
+const router = usePage()
+
+# Kita bisa mengambil param dengan 
+router.params.asd
+
+
+asd, merupakan parameter yang digunakan pada pembuatan router
+{
+	path: "/by-name/:asd?"
+	name: "byName",
+	component: ,,,
+}

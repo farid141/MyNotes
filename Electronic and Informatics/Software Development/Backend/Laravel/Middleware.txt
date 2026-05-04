@@ -1,0 +1,14 @@
+Middleware adalah salah satu aspek pengamanan pada website sebelum request dapat diproses lebih lanjut.
+
+Dapat mengakses objek request yang masuk untuk melakukan pengecekan, antara lain:
+- Request Path, Host, and Method
+- Request Headers
+- Request IP Address
+- Accept type $request->accepts(['text/html', 'application/json']), atau bisa melalui
+$request->header('Accept');
+
+
+Pada Laravel kita dapat:
+- Membuat middleware dalam group dan menerapkannya pada endpoint
+- Membuat alias untuk middleware tersebut
+- Memberikan parameter tambahan pada middleware, semisal URL ingin mengakses dynamic params pada url /{id}

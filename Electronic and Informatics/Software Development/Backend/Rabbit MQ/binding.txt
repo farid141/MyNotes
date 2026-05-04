@@ -1,0 +1,7 @@
+dibuat untuk menghubungkan queue dengan exchanges
+satu queue bisa dibind beberapa exchanges
+
+beberapa parameter pada binding:
+- from exchange
+- routing key
+- arguments

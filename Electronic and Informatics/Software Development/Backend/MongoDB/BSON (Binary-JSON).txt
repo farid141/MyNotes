@@ -1,0 +1,38 @@
+Merupakan bentuk data yang diformat oleh mongodb secara otomatis
+
+Hal ini memungkinkan pengaksesan yang lebih efisien
+
+Tipe Data               Alias       
+===================================================           
+Double                  double
+String                  string
+Object                  object
+Array                   arrat
+Binary Data             binData
+ObjectId                objectId
+Boolean                 bool
+Date                    date
+Null                    null
+Regular Expression      regex
+JavaScript              javascript
+JavaScript with Scope   javascriptWithScope
+32 Bit Integer          int
+Timestamp               timestamp
+64 Bit Integer          long
+Decimal 128             decimal
+Min Key                 minKey
+Max key                 maxKey
+
+
+#ObjectId 
+random data yang unik, cepat untuk digenerate dan terurut.
+Nilai ObjectId memiliki ukuran panjang 12 byte, konsisten terdiri dari informasi:
+- 4 byte timestamp
+- 5 byte random value
+- 3 byte incrementing counter
+ObjectId digunakan sebagai sebagai default _id (primary key) di document jika kita tidak secara eksplisit menyebutkan _id document nya
+
+# BSON Date 
+64 bit integer yang merepresentasikan angka milisecond sejak Unix epoch (1 Januari 1970).
+ISODate merupakan representasi waktu yang digunakan oleh MongoDB
+Date ini kompatibel dengan Date di JavaScript

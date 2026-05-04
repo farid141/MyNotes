@@ -1,0 +1,12 @@
+Dikarenakan fleksibilitasnya, penentuan data model harus mengacu ke penggunaan aplikasi dalam melakukan query, update dan memproses data.
+
+Gunakan Embedded jika :
+- Antar document saling ketergantungan
+- Tidak bisa langsung melakukan perubahan ke embedded document
+- Embedded document selalu dibutuhkan ketika mengambil data document
+
+
+Gunakan Reference jika :
+- Antar document tidak terlalu ketergantungan satu sama lain, entitas yang terpisah
+- Ada keperluan mengubah reference document sering
+- tidak selalu dibutuhkan saat mengambil document

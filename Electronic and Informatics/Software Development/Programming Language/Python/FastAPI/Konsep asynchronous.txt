@@ -1,0 +1,11 @@
+main-thread: thread dimana event-loop berjalan. Memproses async request
+Thread-pool: sebuah kumpulan thread selain main-thread milik worker. Dimana semua sync-route berjalan.
+
+Dalam python terdapat dua route
+
+Async
+Terdapat tambahan async pada definisi fungsi. Berjalan di atas main loop. Ketika ada sebuah fungsi async didalamnya maka main-thread akan dialokasikan ke request lain yang mengarah ke route ini. Jika ada proses non-blocking berat maka request lain ke route ini akan ditangguhkan sampai selesai atau ke main-thread worker lain.
+
+
+Sync
+Sebuah route yang memproses request secara parallel di thread-pool. Mengalokasikan satu thread hanya untuk satu proses sampai selesai. Jumlah request yang masuk terbatas dengan thread-pool yang ada.

@@ -1,0 +1,1 @@
+untuk merefresh hasil edit dokumentasi (halaman utama maupun routing), jalankan php artisan l5-swagger:generate

@@ -1,0 +1,11 @@
+router
+  -index.js -> export default router
+main.js
+
+<router-link :to="{name: 'routename', params: {param}}"
+
+halaman terender->App.vue (<router-view>) akan berisi halaman/konten yang didalam objek/file router
+
+penerapan beberapa layout
+- membuat parent router dengan parent component dan berisi children dengan router/lainnya
+: untuk free param, ? untuk optional

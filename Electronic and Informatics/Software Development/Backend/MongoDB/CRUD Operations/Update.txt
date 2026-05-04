@@ -1,0 +1,13 @@
+Beberapa method update yang tersedia pada mongodb:
+- updateOne()
+- updateMany()
+- replaceOne()
+- replaceMany()
+
+# Umumnya update method membutuhkan 2 argument:
+- queryPredicate (untuk filter)
+- updateParams (field yang akan diupdate)
+
+#
+- Update
+- Replace

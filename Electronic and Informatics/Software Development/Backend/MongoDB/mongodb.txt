@@ -1,0 +1,73 @@
+delete document function
+db.<collection>.deleteOne(_id:"12")
+db.<collection>.deleteMany({_id:{gte:12}})
+
+Bulk Write Operation
+Kirim banyak perintah sekaligus untuk mempercepat dengan menghilangkan response database tiap perintah
+db.<collection>.insertMany()
+db.<collection>.updateMany()
+db.<collection>.deleteMany()
+db.<collection>.bulkWrite()
+
+operasi yang didukung bulkWrite():
+insertOne
+updateOne
+UpdateMany
+replaceOne
+deleteOne
+deleteMany
+
+ada format tersendiri dalam menjalankan bulkWrite
+db.collection.bulkWrite({
+	{deleteMany:{
+	"filter":,
+	"collection":,
+	}}
+})
+
+indexes:
+mempercepat pencarian data dimana akan dibuat field baru. Secara default, _id merupakan index
+1 untuk ascending dan -1 untuk descending. Pembuatan index mempengaruhi pemanggilan data
+
+db.collection.getIndexes()
+db.collection.createIndex({
+	field:1/-1,
+	field:1/-1,
+})
+nama index akan memiliki format field_(-1/1)
+jika compound index, field1_(1/-1)_field2_(-1/1)
+pengaturan asc/desc mempengaruhi speed pengambilan data
+
+untuk pengecekan sebuah query sudah menggunakan index/tidak, gunakanlah explain(), (IXSCAN/COLSCAN) 
+
+ketika kita membuat index=stock dan tags
+maka yang dapat terindex adalah query dengan:
+- stock
+- stock dan tags
+sedangkan tags saja tidak akan terindex
+
+text index, dari sisi kegunaan tidak dapat disamakan dengan database khusus search engine seperti elasticsearch
+db.products.createIndex({
+field1:"text",
+field2:"text",
+field3:"text",
+}, {
+weights:{
+field1:10,
+field1:5,
+field1:1,
+}
+})
+
+weights adalah prioritas, semakin besar semakin penting
+
+berikut contoh penerapan pencarian dengan text index
+$text:{
+	$search: "mie"
+}
+$search: "mie laptop"	// text memiliki mie atau laptop
+$search: '"mie sedap"' 	//text memiliki "mie sedap"
+$search: "mie -sedap"	//text memiliki "mie" dan tidak ada "sedap"
+apakah hanya bisa diterapkan pada saat text index digunakan saja?
+selain itu juga bisa mendapatkan parameter textScore
+

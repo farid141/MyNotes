@@ -1,0 +1,10 @@
+tempat penerimaan data sebelum dikirimkan ke queue dan penerima.
+
+Beberapa parameter ketika membuat exchange:
+- name
+- type: Direct(melihat route key) | Fanout(broadcast) | Topic(sama seperti direct, tetapi dengan pemisah route key ".") | Headers()
+- durability (apakah tetap ada saat restart)
+- autodelete: dihapus ketika queue diunbind
+- internal:  artinya Exchange tidak bisa digunakan oleh Producer, hanya bisa digunakan di internal RabbitMQ
+
+untuk type direct akan dikirim ke queue, jika tidak, maka bisa diterima exchange lain atau bahkan tidak diproses

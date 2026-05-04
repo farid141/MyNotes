@@ -1,0 +1,7 @@
+digunakan dalam composition API untuk mere-render halaman ketika nilainya berubah
+
+const count = ref()
+
+untuk mengaksesnya:
+- dalam script, gunakan count.value
+- dalam template, gunakan count

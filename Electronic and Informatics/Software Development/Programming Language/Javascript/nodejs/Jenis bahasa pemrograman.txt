@@ -1,0 +1,11 @@
+interpreter: mengambil kode python, js
+compiler: mengambil kode c/c++ untuk dikonversi ke kode assembly
+assembler: mengambil kode assembly dan menkonversi ke kode mesin sesuai dengan kode prosesor
+
+kode c: printf("hello world");
+assembly (*.s): mov16 0 2
+machine code: 00011010110 001100101011
+
+dari c/c++ ke assembly akan semakin banyak baris, dari assembly ke machine pun sama, bersyukur ada orang yang membuat code lebih high level
+
+dari sebuah compiler seperti g++, kita dapat membuat file executable, dan assembly dari file *.cpp

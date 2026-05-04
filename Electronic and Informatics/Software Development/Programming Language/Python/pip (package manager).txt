@@ -1,0 +1,6 @@
+PIP merupakan package manager default python, banyak package yang tersedia.
+
+- python -m pip install ... 
+- pip install ...
+
+pada perintah pertama dia akan menginstall package pada python yang aktif sekarang, sedangkan perintah kedua kurang save, dikarenakan menginstall di python yang ditemukan pip pertama kali

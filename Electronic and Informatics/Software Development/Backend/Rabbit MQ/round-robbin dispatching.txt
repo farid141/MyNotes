@@ -1,0 +1,5 @@
+# ketika menjalankan beberapa konsumer yang konek ke antrean yang sama:
+pesan akan masuk ke konsumer secara bergantian antara konsumer (setelah dikonsum oleh a, akan diambil oleh b, kemudian oleh a lagi)
+hal ini berjalan secara default
+
+# Koneksi dari konsumer bisa dilihat pada bagian connection dan channels pada web management

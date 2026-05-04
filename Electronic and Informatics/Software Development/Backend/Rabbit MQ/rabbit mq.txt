@@ -1,0 +1,23 @@
+rabbit mq
+- RPC (Remote Procedure Call) sistem komunikasi antara client dan server seperti REST API
+- Message Broker, sistem komunikasi dengan menentukan mana subscriber dan publisher
+
+Rabbit MQ merupakan message broker,
+Skalabilitas, tidak perlu mengubah aplikasi sisi pengirim
+
+kekurangan:
+- delay, ada beberapa proses yang masih berjalan, bisa menyebabkan salah tafsir data
+
+keuntungan:
+- sangat ringan dibanding apache kafka
+- didukung banyak bahasa
+- dapat dijalankan dalam cluster
+- mengikuti standar AMQP (Advance Message Queueing Protocol)
+
+web management:
+mempermudah akses RabbitMQ dengan interface website
+rabbitmq-plugins enable rabbitmq_management
+
+client library:
+bisa digunakan pada banyak bahasa pemrograman
+https://www.rabbitmq.com/devtools.html  

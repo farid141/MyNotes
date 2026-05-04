@@ -1,0 +1,5 @@
+merupakan variabel pada sebuah komponen, bisa diakses dengan "this." keyword.
+
+selalu hindari properti yang diawali dengan $ dan -.
+
+Kita bisa mendefinisikan property yang tidak ditulis pada data(). Tetapi property tersebut tidak akan reactive (merender komponen saat nilai berubah)

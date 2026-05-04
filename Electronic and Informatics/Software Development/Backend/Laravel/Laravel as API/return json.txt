@@ -1,0 +1,19 @@
+# Pada form request, override method, dengan:
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'Validation failed',
+            'errors' => $validator->errors(),
+        ], 422));
+    }
+
+# Pada controller, pastikan membuat try catch pada method setelah validate
+$request->validated()
+
+try{
+}catch(){
+}
+
+# Atau dengan mengatur field "Accept" dari Header ke "application/json"
+kemudian membuat seperti ini
+abort(422, 'This is a custom error message.');

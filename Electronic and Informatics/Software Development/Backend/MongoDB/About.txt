@@ -1,0 +1,16 @@
+Berasal dari kata 'humongous' berarti sangat besar. Cocok untuk penyimpanan data yang sangat besar.
+Merupakan Document oriented database yakni, sistem database yang digunakan untuk memanipulasi data dalam bentuk document (semi structured data) json/xml
+
+Tidak menggunakan SQL, namun menggunakan JavaScript sebagai bahasa utama untuk manipulasi document
+
+# Perbandingan istilah pada SQL dan NoSQL
+Relational DB	Document DB (MongoDB)
+==========================================
+Database	Database
+Table		Collection
+Column		Field
+Row, Record	Document (JSON, XML, dan lain-lain)
+Join Table	Embedded Document, Reference
+SQL		JavaScript (MongoDB)
+
+Sangat penting memahami istilah tersebut agar dapat memahami documentationnya

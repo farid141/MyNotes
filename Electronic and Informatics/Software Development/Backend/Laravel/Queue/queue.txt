@@ -1,0 +1,19 @@
+queue adalah sistem antrean pekerjaan pada Laravel, yang digunakan untuk mengerjakan task dibackground. 
+Biasanya digunakan agar response diterima tanpa perlu menunggu sebuah proses sampai selesai.
+
+Beberapa penerapan dari queue:
+1. mail->queue
+2. listener, implementasikan queue
+3. job
+
+# Mendefinisikan koneksi queue yang dijalankan:
+php artisan queue:work redis
+
+# Menjalankan custom queue
+Secara default, queue yang digunakan adalah sesuai dengan yang ada di config/queue.php
+php artisan queue:work --queue=emails
+
+# Menjalankan beberapa queue secara paralel
+Queue yang sama akan dijalankan secara fifo. Agar dapat berjalan bersaman, buat queue lain
+
+

@@ -1,0 +1,34 @@
+Ketika mengambil data dari mongodb, kita dapat menggunakan beberapa method:
+- find(queryPredicate)
+- findOne(queryPredicate)
+
+# Query predicate
+merupakan objek yang digunakan untuk memfilter data yang diambil
+
+# Specify Equality Condition
+Mencari field yang sama dengan value
+{ <field1>: <value1>, ... }
+
+# Specify Conditions Using Query Operators
+Mencari field yang memenuhi kondisi operator
+https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-selectors
+{ <field1>: { <operator1>: <value1> }, ... }
+find( { status: { $in: [ "A", "D" ] } } )
+
+# Specify AND Conditions
+Secara otomatis beberapa key pada queryPredicate akan menggunakan AND. Pada query operator juga sama
+
+# Specify OR Conditions
+Secara otomatis beberapa key akan diperlakukan AND, jika ingin memperlakukan OR, gunakan operator $or:
+db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } )
+
+# Kita juga bisa menggunakan $or ke field yang sama
+db.collection.find({
+  $or: [
+    { age: { $gt: 35 } },
+    { age: { $lt: 18 } }
+  ]
+})
+
+# Kita tidak bisa menggunakan $ or dalam field, syntax invalid (X)
+age: $or[ { $gt: 35 }, {$lt: 18 } }

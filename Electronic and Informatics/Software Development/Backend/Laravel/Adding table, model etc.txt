@@ -1,0 +1,8 @@
+Ketika membuat sebuah table baru pada database, pastikan kita membuat model. 
+Dengan adanya model ketika kita ingin melakukan satu aksi kepada table terkait, akan meningkatkan keterbacaan dan kemudahan fitur ORM.
+
+Hal yang harus dihindari adalah:
+- membuat controller menggunakan resource, dimana ada beberapa endpoint yang terbuat tetapi tidak digunakan.
+	Beberapa dampak yang dapat ditimbulkan jika tetap dihiraukan
+	- Ketika tidak menggunakan caching akan memperlambat aplikasi. Route caching mempercepat routing dengan menghindari overhead parsing dan matching route, langsung menggunakan file PHP yang sudah dioptimalkan. Jadi, untuk aplikasi di production, selalu gunakan route caching untuk performa maksimal.
+	- Celah keamanan yang mungkin terbuka, dimana ada pengaksesan terhadap fitur lama.

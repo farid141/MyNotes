@@ -1,0 +1,17 @@
+digunakan untuk meregistrasikan callback function ketika sebuah state berubah, biasanya mengakses seperti dependant dropdown yang membutuhkan akses pihak ketiga.
+
+Dalam kasus semisal kita mengubah sebuah provinsi, maka dropdown kota akan berubah, dan harusnya kecamatan berubah. Dalam kasus ini @change kota tidak akan tertrigger karena perubahan dari script
+
+## State awal rendering tidak akan mentrigger watcher
+
+
+<script>
+
+watch(productid, (newVal, oldVal)=>{
+	// proses
+},
+immediate: bool,
+once: bool
+)
+
+</script>

@@ -1,0 +1,16 @@
+setup axios:
+1. Setting axios secara global
+//axiosClient.js
+export default axiosClient = axios.create ({
+    baseURL:
+    timeout:
+    headers:{}
+})
+
+2. gunakan axios pada komponent FE:
+//component_x.js
+import axios from './axiosClient'
+axios.get();
+
+
+dengan setup tersebut, kita tidak perlu setting axios pada komponen, bisa langsung digunakan

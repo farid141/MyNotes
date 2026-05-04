@@ -1,0 +1,14 @@
+# Instalasi pada windows ada 2 macam, custom atau as service.
+- custom, maka kita perlu menjalankan server secara manual pada terminal
+- service, server akan otomatis dijalankan oleh windows service
+
+# Konfigurasi server dapat diakses pada:
+C:\Program Files\MongoDB\Server\7.0\bin\mongod.cfg
+
+# Mengakses mongodb dengan aplikasi client, ada 3 cara:
+- menggunakan shell (mongosh atau legacy mongo shell)
+- menggunakan UI (mongodb compass)
+- mengakses dengan program
+
+# Beberapa fitur mongoshell
+syntax highlighting, autocompletion, and better error messages.

@@ -1,0 +1,26 @@
+Beberapa hal yang harus diperhatikan:
+- setup OAuth provider (github/) untuk digunakan credentialsnya
+- kompleksitas development
+https://medium.com/@Alabuja/social-login-in-laravel-with-socialite-90dbf14ee0ab
+- setup database yang diperlukan
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateLinkedSocialAccountsTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('linked_social_accounts', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('socialite_id');
+            $table->string('socialite_provider');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('linked_social_accounts');
+    }
+}

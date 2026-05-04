@@ -1,0 +1,5 @@
+When rendering an exception, Laravel will automatically determine if the exception should be rendered as an HTML or JSON response based on the "Accept" header of the request. 
+
+Pada API, kita bisa mengatur request ke application/json agar menerima json daripada render halaman
+
+abort(422, 'This is a custom error message.');

@@ -1,0 +1,8 @@
+# Filter document yang memiliki field tags dengan urutan red, black
+( { tags: ["red", "black"] } )
+
+# Filter document yang memiliki field tags walau tidak berurutan
+( { tags: { $all: ["red", "blank"] } } )
+
+# Menggunakan filter biasa akan mencari 'setidaknya ada satu array yang memenuhi'
+db.inventory.find( { tags: "red" } )

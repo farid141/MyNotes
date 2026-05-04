@@ -1,0 +1,78 @@
+Ya, Laravel mendukung penerapan rate limiter secara spesifik untuk endpoint tertentu menggunakan fitur **Rate Limiting** yang diperkenalkan sejak Laravel 8. Kamu bisa mendefinisikan aturan rate limiting untuk setiap endpoint atau grup endpoint menggunakan middleware `Throttle` atau dengan mendefinisikan logika rate limiter kustom di file `App\Providers\RouteServiceProvider`.
+
+### Langkah-Langkah Menerapkan Rate Limiting untuk Endpoint Spesifik
+
+#### 1. **Definisikan Rate Limiter**
+Buka file `RouteServiceProvider` (biasanya di `app/Providers/RouteServiceProvider.php`), lalu gunakan metode `RateLimiter::for` untuk mendefinisikan rate limiter khusus. Contoh:
+
+```php
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+
+public function boot()
+{
+    $this->configureRateLimiting();
+
+    // Rate limiter khusus untuk endpoint tertentu
+    RateLimiter::for('custom-api', function ($request) {
+        return Limit::perMinute(10)->by($request->ip());
+    });
+}
+```
+
+Dalam contoh di atas, limiter `custom-api` mengizinkan maksimal 10 permintaan per menit per IP.
+
+#### 2. **Terapkan Rate Limiter ke Endpoint**
+Gunakan nama limiter (`custom-api`) yang sudah didefinisikan di langkah sebelumnya pada route tertentu di file `routes/web.php` atau `routes/api.php`:
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::middleware(['throttle:custom-api'])->group(function () {
+    Route::get('/my-endpoint', [MyController::class, 'index']);
+});
+```
+
+Atau langsung diterapkan pada route tunggal:
+
+```php
+Route::get('/my-endpoint', [MyController::class, 'index'])->middleware('throttle:custom-api');
+```
+
+#### 3. **Penggunaan Default Limiter**
+Jika ingin menggunakan rate limiter bawaan Laravel (`throttle:api`), kamu bisa mengatur batasan global di file `app/Providers/RouteServiceProvider.php`:
+
+```php
+RateLimiter::for('api', function ($request) {
+    return Limit::perMinute(60);
+});
+```
+
+Kemudian tambahkan middleware `throttle:api` ke endpoint:
+
+```php
+Route::get('/example', [ExampleController::class, 'index'])->middleware('throttle:api');
+```
+
+#### 4. **Respon Rate Limiter**
+Jika batas rate limiter terlampaui, Laravel akan secara otomatis memberikan respon HTTP 429 (**Too Many Requests**) dengan pesan error bawaan.
+
+#### 5. **Bisa Menggunakan Kriteria Lain**
+Selain IP, kamu juga bisa membatasi berdasarkan kriteria lain, misalnya berdasarkan pengguna yang terautentikasi:
+
+```php
+RateLimiter::for('authenticated-user', function ($request) {
+    return $request->user()
+        ? Limit::perMinute(20)->by($request->user()->id)
+        : Limit::none();
+});
+```
+
+Middleware-nya:
+
+```php
+Route::get('/user-endpoint', [UserController::class, 'index'])->middleware('throttle:authenticated-user');
+```
+
+### Kesimpulan
+Laravel mempermudah implementasi rate limiter spesifik untuk endpoint menggunakan `RateLimiter` dan middleware `throttle`. Kamu bisa menyesuaikan batas permintaan berdasarkan IP, pengguna, atau parameter lainnya.

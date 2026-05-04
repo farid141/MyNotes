@@ -1,0 +1,3 @@
+Pada document yang bertipe embedded (nested), kita dapat melakukan filter field dengan dot notation
+
+field1.subfield2
