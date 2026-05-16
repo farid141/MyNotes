@@ -42,13 +42,13 @@ Di mana:
 
 Biasanya disebut:
 
-### Gear ratio:
+### Gear ratio
 
 [
 \text{Gear Ratio} = \frac{N_f}{N_r}
 ]
 
-### Final drive (dengan roda):
+### Final drive (dengan roda)
 
 [
 \text{Final Ratio} = \frac{N_f}{N_r} \times D
@@ -132,4 +132,3 @@ Aku bisa hitungkan:
 * perbandingan antar setup
 
 Bisa sekalian dibandingin sepeda kamu sekarang vs upgrade 👍
-
