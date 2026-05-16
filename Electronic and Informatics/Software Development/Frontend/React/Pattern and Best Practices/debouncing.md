@@ -57,9 +57,8 @@ function DebouncedInput() {
 }
 ```
 
----
+### Penjelasan
 
-- Ketika pengguna mengetik sesuatu di input (onChange), fungsi handleChange dipanggil.
-- Pertama, kita set search ke nilai input yang sedang diketik.
-- Selanjutnya, kita mengecek apakah ada timeout yang sebelumnya sedang berjalan dengan timeoutRef.current. Kalau ada, kita clearTimeout untuk membatalkan timeout tersebut (menghindari eksekusi yang tidak diinginkan).
-- Kemudian kita set timeout baru dengan setTimeout, yang akan mengupdate debouncedValue setelah 500ms. Artinya, debouncedValue hanya akan diupdate setelah pengguna berhenti mengetik selama 500ms.
+- handleChange dipanggil setiap ada perubahan cepat.
+- perubahan state hanya terjadi setelah `500ms` dari `handleChange` dipanggil.
+- Jika ada `handleChange` baru sebelum `handleChange` sebelumnya mengubah state, maka akan menghapus `timeOutRef` yang mengakibatkan `setTimeout` sebelumnya tidak bekerja.

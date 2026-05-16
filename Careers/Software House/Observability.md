@@ -1,4 +1,25 @@
-# Observability
+# Monitoring & Observability
+
+Loki bertujuan sebagai `database` log, karena efisien dan dapat menampung log, daripada file `.log` di aplikasi
+
+Promtail berguna sebagai log forwarder (cek log di semua app ysng ada di server/host dan dikirim ke central loki). Sebelum di push akan menambahkan label/metadata (nama service, container, environment, host, dll)
+
+## Monitoring
+
+Monitoring merupakan cara menampilkan komparasi `metriks` dengan `treshold` secara garis besar.
+
+Contoh umum:
+
+- cpu
+- memory
+- response time
+- server load
+- network traffic
+- db query
+
+hanya untuk antisipasi hal yang sudah diperhitungkan
+
+## Observaiblity
 
 Observability merupakan kemudahan untuk menemukan penyebab utama dari masalah. Tiga pilar observability:
 
@@ -15,6 +36,13 @@ Urutan identifikasi masalah, pemasangan alert pada prometheus juga memungkinkan 
 3. Logs => “What exactly happened?”
 
 ## 1. Logging
+
+- `Grafana` frontend UI untuk tampilin logs, metrics,
+- `Prometheus` db storing metrics (time series)
+- `Tempo` db for storing traces
+- `Loki` db for storing logs
+- `Open Telemetry` (vendor agnostic) collect data
+- `Sentry` Error Program
 
 Jejak peristiwa/aktivitas proses yang dijalankan sebuah aplikasi. Pola umumnya adalah, semua logs akan disimpan dalam loki sebagai time series, dimana data dipush oleh `log collector` seperti `promtail`. Dimana promtail akan langsung mengirim ke loki setiap ada perubahan file log yang dipantau.
 
