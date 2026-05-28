@@ -14,3 +14,7 @@ Persiapan yang baik sangat penting untuk kenyamanan dalam perjalanan jauh.
 - Gunakan baju gelap (sinar tidak tembus), baju tidak basah, bahan rapat (denim, wol, atau poliester).
 - Hal yang sama untuk melindungi leher dan tangan
 - UV krim dengan spek `SPF50+` dan `PA++++`
+
+## Lainnya
+
+- Strepsils?
