@@ -36,6 +36,8 @@ Dengan flag:
 -d
 ```
 
+Selain itu, kita bisa menjalankan `service tertentu`, instead of menjalankan semua sekaligus dalam 1 command. Tambahkan `nama service` tersebut diakhir command.
+
 ### Perilaku Saat `docker compose up`
 
 Misal menjalankan:
