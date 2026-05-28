@@ -1,4 +1,25 @@
-# Observability
+# Monitoring & Observability
+
+Loki bertujuan sebagai `database` log, karena efisien dan dapat menampung log, daripada file `.log` di aplikasi
+
+Promtail berguna sebagai log forwarder (cek log di semua app ysng ada di server/host dan dikirim ke central loki). Sebelum di push akan menambahkan label/metadata (nama service, container, environment, host, dll)
+
+## Monitoring
+
+Monitoring merupakan cara menampilkan komparasi `metriks` dengan `treshold` secara garis besar.
+
+Contoh umum:
+
+- cpu
+- memory
+- response time
+- server load
+- network traffic
+- db query
+
+hanya untuk antisipasi hal yang sudah diperhitungkan
+
+## Observaiblity
 
 Observability merupakan kemudahan untuk menemukan penyebab utama dari masalah. Tiga pilar observability:
 

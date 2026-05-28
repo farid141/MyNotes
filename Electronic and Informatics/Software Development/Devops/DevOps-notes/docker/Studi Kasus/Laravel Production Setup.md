@@ -1,6 +1,17 @@
-# Penjelasan
+# Laravel Production Setup
 
-Dalam production Laravel, umumnya menggunakan php-fpm sebagai php engine dan NGINX sebagai web service
+Dalam production Laravel, umumnya menggunakan `php-fpm` sebagai php engine dan `NGINX` sebagai web service. Dimana `NGINX` berperan sebagai web server yang akan mengerahkan request dari luar ke `jaringan app`.
+
+PHP-FPM digunakan daripada laravel built-in web server `php artisan serve` dikarenakan performa nya lebih baik.
+
+- lifecycle request yang stabil
+- process management (worker pool)
+- concurrency lebih proper
+- integrasi matang dengan web server
+- observability / tuning
+- battle-tested
+
+## NGINX config
 
 ```conf
 server {
@@ -28,7 +39,40 @@ server {
 
 ```
 
-```dockerfile
+## Docker Image
+
+```Dockerimage
+# Build stage
+FROM composer:2 AS composer-build
+
+WORKDIR /app
+COPY composer.* ./
+RUN composer install --no-dev --optimize-autoloader
+
+COPY . .
+
+# Runtime
+FROM php:8.3-fpm-alpine
+
+WORKDIR /var/www
+
+COPY --from=composer-build /app /var/www
+```
+
+### Kalau ada Vite
+
+tambahkan stage Node buat:
+
+```bash
+npm ci
+npm run build
+```
+
+lalu copy hasil public/build.
+
+## Docker Compose
+
+```yml
 version: '3.8'
 
 services:

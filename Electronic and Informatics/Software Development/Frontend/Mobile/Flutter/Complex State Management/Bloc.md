@@ -2,8 +2,6 @@
 
 Berikut penjelasan **komprehensif dan end-to-end** mengenai **Bloc sebagai state management** di Flutter, mulai dari konsep dasar, arsitektur, alur data, hingga best practice penggunaannya.
 
----
-
 ## 1. Apa itu Bloc?
 
 **Bloc (Business Logic Component)** adalah pola arsitektur sekaligus library (`bloc` dan `flutter_bloc`) yang digunakan untuk:
@@ -17,8 +15,6 @@ Bloc sangat cocok untuk aplikasi **menengah hingga besar** yang membutuhkan:
 * konsistensi state
 * maintainability
 * kemudahan testing
-
----
 
 ## 2. Masalah yang Diselesaikan Bloc
 
@@ -35,13 +31,11 @@ Bloc mengatasi ini dengan:
 * **State immutable**
 * **Perubahan state hanya melalui event**
 
----
-
 ## 3. Konsep Inti Bloc
 
 ### 3.1 Event
 
-**Event** merepresentasikan **aksi atau intent** dari user atau sistem.
+**Event** merepresentasikan **aksi atau intent** dari user atau sistem, merupakan `abstraksi` class.
 
 Contoh:
 
@@ -57,8 +51,6 @@ Event:
 * Bersifat **input**
 * Tidak mengandung logic
 * Biasanya berasal dari UI
-
----
 
 ### 3.2 State
 
@@ -83,11 +75,9 @@ Karakteristik state:
   * class tunggal
   * union/sealed class (loading, success, error)
 
----
-
 ### 3.3 Bloc
 
-**Bloc** adalah pusat pengolahan:
+Dalam pendefinisian class `Bloc` diperlukan `event` dan `state`, ini adalah pusat pengolahan:
 
 * menerima event
 * menjalankan business logic
@@ -108,8 +98,6 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 }
 ```
-
----
 
 ## 4. Alur Data (Unidirectional Data Flow)
 
@@ -133,13 +121,20 @@ Poin penting:
 * Bloc **tidak tahu tentang UI**
 * Semua perubahan state **terlacak dan eksplisit**
 
----
+```dart
+// Mentrigger event IncreentPressed
+context.read<CounterBloc>().add(IncrementPressed());
+bloc.add(AddItem(item));
+bloc.add(RestoreCart());
+bloc.add(ApplyPromo(code));
+bloc.add(SyncFromServer());
+```
 
 ## 5. Integrasi Bloc dengan UI (flutter_bloc)
 
 ### 5.1 BlocProvider
 
-Digunakan untuk **menyediakan Bloc ke widget tree**.
+Digunakan untuk **menyediakan Bloc ke widget tree**. Jadi kita menuliskan BlocProvider pada `parent` sehingga dalam child kita dapat mengakses BloC dengan `listener` dan `builder`.
 
 ```dart
 BlocProvider(
@@ -160,11 +155,9 @@ MultiBlocProvider(
 );
 ```
 
----
-
 ### 5.2 BlocBuilder
 
-Untuk **render UI berdasarkan state**.
+Untuk **render UI berdasarkan perubahan state**.
 
 ```dart
 BlocBuilder<CounterBloc, CounterState>(
@@ -178,11 +171,9 @@ BlocBuilder<CounterBloc, CounterState>(
 * Harus **pure UI**
 * Tidak boleh ada side effect
 
----
-
 ### 5.3 BlocListener
 
-Untuk **side effects**, bukan UI.
+Untuk **side effects** jika kita ingin melakukan aksi (callback), bukan UI.
 
 ```dart
 BlocListener<AuthBloc, AuthState>(
@@ -194,7 +185,7 @@ BlocListener<AuthBloc, AuthState>(
 );
 ```
 
-Side effects:
+Side effects yand diberikan dapat berupa:
 
 * navigation
 * snackbar
@@ -202,13 +193,9 @@ Side effects:
 * logging
 * analytics
 
----
-
 ### 5.4 MultiBlocListener
 
 Mengelompokkan banyak listener (bukan state management).
-
----
 
 ### 5.5 BlocConsumer
 
@@ -230,36 +217,7 @@ BlocConsumer<LoginBloc, LoginState>(
 );
 ```
 
----
-
-## 6. Cubit vs Bloc
-
-### Cubit
-
-Versi lebih sederhana dari Bloc.
-
-```dart
-class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
-
-  void increment() => emit(state + 1);
-}
-```
-
-| Cubit                 | Bloc                 |
-| --------------------- | -------------------- |
-| Tanpa event           | Menggunakan event    |
-| Lebih ringkas         | Lebih eksplisit      |
-| Cocok state sederhana | Cocok logic kompleks |
-
-**Rule praktis**:
-
-* Sederhana → Cubit
-* Kompleks / enterprise → Bloc
-
----
-
-## 7. Struktur Folder (Best Practice)
+## 6. Struktur Folder (Best Practice)
 
 Contoh skala menengah:
 
@@ -283,11 +241,9 @@ login/
  └── model/
 ```
 
----
+## 7. Keunggulan BloC dibandingkan Cubit
 
-## 8. Testing Bloc (Keunggulan Utama)
-
-Bloc sangat mudah di-test karena:
+### 1. Mudah di test
 
 * Logic terpisah
 * State predictable
@@ -303,25 +259,53 @@ blocTest<CounterBloc, CounterState>(
 );
 ```
 
----
+### 2. Dilog/rekam/replay
 
-## 9. Kapan Bloc Digunakan?
+Bisa trace/debug sequence misal
 
-Gunakan Bloc jika:
+* LoginRequested
+* FetchProfile
+* LoadNotifications
+* LogoutRequested
 
-* Aplikasi punya banyak screen
-* State saling bergantung
-* Perlu testability tinggi
-* Banyak async process (API, socket)
+### 3. Mudah diproses concurrent
 
-Hindari Bloc jika:
+Terdapat method bawaan untuk handle behavior state pakai `transformer` (droppable, restartable, sequential). Ketika state berubah mentrigger API call dan terlalu cepat, dapat meng-cancel reqest sebelumnya. (Cubit juga bisa tapi manual)
 
-* App sangat kecil
-* State hanya lokal dan sederhana
+```dart
+on<SearchChanged>(
+  _onSearchChanged,
+  transformer: restartable(),
+);
+```
 
----
+## Cubit
 
-## 10. Kesimpulan Akhir
+Versi lebih sederhana dari Bloc. Penggunaannya `sama aja` dengan Bloc yaitu dengan `BlocProvider`, `BlocListener`, `BlocBuilder` yang membedakan hanyalah gaya penulisan code. Cubit lebih `action based`, sedangkan bloc lebih event based.
+
+```dart
+class CounterCubit extends Cubit<int> {
+  CounterCubit() : super(0);
+
+  void increment() => emit(state + 1);
+}
+
+// Memanggil method/action cubit
+context.read<CounterCubit>().increment();
+```
+
+| Cubit                 | Bloc                 |
+| --------------------- | -------------------- |
+| Tanpa event           | Menggunakan event    |
+| Lebih ringkas         | Lebih eksplisit      |
+| Cocok state sederhana | Cocok logic kompleks |
+
+**Rule praktis**:
+
+* Sederhana → Cubit
+* Kompleks / enterprise → Bloc
+
+## Kesimpulan Akhir
 
 * **Bloc adalah state management yang kuat dan terstruktur**
 * Menggunakan:
