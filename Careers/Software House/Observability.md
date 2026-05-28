@@ -100,8 +100,8 @@ Data yang di-pull akan disimpan dalam bentuk time-series.
 
 Jenis data dibagi menjadi 2:
 
-- Counter: `request total`, `jobs processed`, `error total`
-- Gauge: `memory usage`, `active connections`
+- Counter: `request total`, `jobs processed`, `error total` data yang terus bertambah dari kejadian yang terjadi sebelumnya
+- Gauge: `memory usage`, `active connections` data yang mencerminkan kondisi saat ini.
 
 Untuk data seperti RPS, biasanya ditampilkan di grafik berupa selisih request/ selisih interval, dikarenakan angka pasti akan terus naik dan hanya turun ketika app down.
 
