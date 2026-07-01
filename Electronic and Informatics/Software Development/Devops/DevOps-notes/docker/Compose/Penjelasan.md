@@ -57,7 +57,7 @@ Compose:
 * Validasi schema
 * Menentukan project name (default: nama folder)
 
-Project name penting karena menjadi prefix resource/object:
+Project name penting karena menjadi `prefix` sebelum `resource/object`:
 
 ```bash
 [myapp]_web_1
@@ -80,7 +80,7 @@ Perilaku penting:
 * Network dibuat sekali
 * Service bisa resolve nama service lain sebagai DNS hostname
 
-  * `web` bisa akses `db:5432`
+  * `web` bisa akses `db:5432`, karena nama service database adalah `db`
 
 #### (3) Volume Creation
 
@@ -133,8 +133,44 @@ myapp_web_1
 ##### Depends On
 
 * Hanya mengatur urutan start
-* Tidak menunggu service ready
-* Untuk readiness perlu `healthcheck`
+* Tidak menunggu service readiness, perlu `healthcheck`
+
+```yml
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    # Define how to check the database health
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  web:
+    image: my-web-app:latest
+    ports:
+      - "8080:8080"
+    # Delay startup until db reports a healthy status
+    depends_on:
+      db:
+        condition: service_healthy
+```
+
+Secara default, healtchcheck hanya dapat di satu compose, tapi jika ingin berdasarkan service lain, dapat menjalankan custom script pada container
+
+```yaml
+entrypoint: >
+     sh -c "
+     until curl -s http://api-compose-a:8080/health; do
+     echo 'Menunggu API Compose-A siap...';
+     sleep 3;
+     done;
+     exec npm start"
+```
 
 ## `docker compose stop`
 
@@ -189,7 +225,7 @@ myapp_web_3
 * Semua join network yang sama
 * DNS internal melakukan round-robin
 
-## Network Behavior Internally
+## Network Behavior Internally & Ports
 
 Compose menggunakan **bridge driver** (default).
 
@@ -199,6 +235,11 @@ Karakteristik:
 * Internal DNS resolver
 * Container bisa komunikasi pakai nama service
 * Tidak expose ke host kecuali pakai `ports`
+
+```yml
+ports:
+     - "41521:1521"
+```
 
 ## Dependency Graph Execution
 

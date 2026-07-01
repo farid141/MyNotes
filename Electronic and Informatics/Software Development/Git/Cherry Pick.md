@@ -2,7 +2,10 @@
 
 Merupakan sebuah cara untuk mengambil beberapa commit dari `branch A` ke `branch B` tanpa merge secara langsung.
 
-Gunakan git cherry-pick untuk mengambil 3 commit spesifik dari branch A ke B tanpa membawa commit lain. Cara ini memungkinkan Anda memilih commit secara individual atau rentang (range) commit tertentu dan menerapkannya di branch B.
+Gunakan git cherry-pick untuk mengambil 3 commit spesifik dari branch A ke B tanpa membawa commit lain. Nantinya branch B akan punya beberapa commit yang disebutkan tersebut.
+
+## Langkah
+
 Berikut adalah langkah-langkahnya:
 
 1. Temukan Hash Commit: Buka branch A dan cari SHA-1 hash dari 3 commit yang diinginkan menggunakan git log.

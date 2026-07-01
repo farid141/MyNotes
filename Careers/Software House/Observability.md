@@ -121,6 +121,14 @@ Untuk data seperti RPS, biasanya ditampilkan di grafik berupa selisih request/ s
 - Disk: node_disk_read_bytes_total, node_disk_written_bytes_total
 - Network: node_network_receive_bytes_total, node_network_transmit_bytes_total
 
+```bash
+volumes:
+  # agar dapat metric host (bukan container)
+  - /proc:/host/proc:ro
+  - /sys:/host/sys:ro
+  - /:/rootfs:ro
+```
+
 #### Data Metrics (App Level)
 
 Untuk level app, biasanya tersedia `library prometheus` yang akan expose di `/metrics`, kemudian di konfigurasi `prometheus` kita setting untuk mengarah ke endpoint `/metrics` tersebut. Data yang dikumpulkan seperti:
@@ -234,7 +242,7 @@ async def metrics():
 
 ##### App Container Resource Metrics (Cadvisor)
 
-Cadvisor digunakan untuk monitoring metrics semua container, sehingga cukup dibuat satu container host saja.
+Cadvisor digunakan untuk monitoring metrics semua container, sehingga cukup dibuat satu `container host` saja.
 
 ```yaml
 services:
@@ -264,6 +272,13 @@ scrape_configs:
   - job_name: "cadvisor"
     static_configs:
       - targets: ["cadvisor:8080"]
+```
+
+Query Container tertentu
+
+```bash
+container_memory_usage_bytes{name="my-fastapi-app"}
+rate(container_cpu_usage_seconds_total{name="my-fastapi-app"}[5m])
 ```
 
 ##### Common Prometheus Client Query
@@ -353,11 +368,15 @@ Berguna untuk menampilkan data:
 - `logs` dari loki
 - `traces`
 
-Untuk menampilkan data tersebut, tambahkan dulu url app (loki, prometheus, tempo) ke settings->data source
+Untuk menampilkan data tersebut, tambahkan dulu url app (loki, prometheus, tempo):
 
-Bisa bikin beberapa dashboard? halaman explore? kemudian apa lagi?
+- UI: settings->data source
+- Yaml: konfigurasi dari script
 
-Default port 3000, user/password = admin/admin
+Default config:
+
+- port 3000
+- user/password = admin/admin
 
 ## Alternative Tools Aloy
 
@@ -386,6 +405,8 @@ Bikin docker compose untuk host dan app:
 
 - Host (prometheus, Loki, Tempo, Grafana, AlertManager, Cadvisor)
 - App (DB, FE, BE)
+
+## Notes and Questions from Udemy
 
 apa itu ec2 instance? apakah vps? inbound security group rule?
 
