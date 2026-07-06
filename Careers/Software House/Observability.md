@@ -27,6 +27,8 @@ Observability merupakan kemudahan untuk menemukan penyebab utama dari masalah. T
 2. `Metrics` Angka terukur seperti request per second, error rate, GC pause, memory, CPU.
 3. `Tracing` Menelusuri request end-to-end di banyak service.
 
+VS ELK
+
 Selain 3 point tersebut, biasanya dibutuhkan dashboard visualisasi Grafana.
 
 Urutan identifikasi masalah, pemasangan alert pada prometheus juga memungkinkan penanganan lebih cepat.
@@ -38,6 +40,10 @@ Urutan identifikasi masalah, pemasangan alert pada prometheus juga memungkinkan 
 ## 1. Logging
 
 Jejak peristiwa/aktivitas proses yang dijalankan sebuah aplikasi. Aplikasi akan menyimpan log pada `file .log`, kemudian ada `log collector` seperti `promtail` yang akan langsung mengirim ke loki berupa time-series setiap ada perubahan file log yang dipantau.
+
+Masalah akan berkembang ketika banyak traffic, karena logging bisa saja tidak berurutan per proses, bisa pake request id. Agar lebih rapi, gunakan format json yang ditentukan.
+
+Akan lebih berkembang lagi jika `scale up`, ketika ada beberapa container (microservice). Untuk itu, gunakan centralized logging.
 
 ### Loki
 
@@ -52,6 +58,8 @@ Untuk mengumpulkan detail log dari code, bisa diberi label untuk mempermudah vis
 #### Agent Log Collector
 
 Biasanya digunakan ada `Promtail` atau `Aloy`. Didalamnya, kita mengkonfigurasi direktori file `.log` dan url loki, <http://loki:3100/loki/api/v1/push>. Namun biasanya di bahasa pemrograman tersedia library untuk push ke promtail lewat `queue` jadi tidak terlalu menghambat performa.
+
+>`Promtail` sudah deprecated per 2026, gunakan `Aloy`
 
 Alur ini bertujuan agar aplikasi tidak lemot karena ada `proses push ke loki` secara langsung di sebuah endpoint. Karena lebih cepat jika mengeluarkan ke stdout daripada satu proses dengan app.
 
