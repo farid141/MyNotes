@@ -23,3 +23,18 @@ Terdapat beberapa pendekatan untuk ini:
 `CDC` (Change Data Capture): `write db data change` => `debezium via WAL` => `kafka` => `agregasi` => `read db`
 
 Dalam kasus tersebut, `agregasi` dapat berupa container agregasi seperti `kafkasql` atau jika ingin lebih simple pake product search yang didalamnya `consume event` dari kafka dan ngebentukin sebelum dimasukkan ke `read db`.
+
+## Sinkronisasi OLTP ke OLAP
+
+sinkronisasi oltp ke olap, ada 2 cara:
+
+- CDC (change data capture), realtime
+- ETL (data engineering extract, transform, load), periodik schedule-based
+
+Postgres -> WAL (tulis ke file log) -> CDC (biasanya debezium dan kafka) -> Clickhouse
+
+cuma butuh konfigurasi postgre:
+
+- wal level
+- replica identity
+- create
