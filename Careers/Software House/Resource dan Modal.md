@@ -59,6 +59,63 @@ Semua aplikasi tidak saling tabrakan, domain diarahkan lewat reverse proxy.
 
 ### **CI/CD Via Container Registry + Pull di VPS (Paling Stabil)**
 
+### Integration
+
+CI server seperti GitHub Actions, memiliki fitur pengecekan code sebelum dicommit ke branch utama, jika memenuhi akan lanjut untuk build image production dan push ke registry.
+
+Fungsi utama:
+
+* Menguji dan memverifikasi kode yang dikirimkan ke repository.
+* Linting / static analysis untuk menjaga kualitas kode.
+* Menjalankan unit test / integration test.
+* Membuild aplikasi (misalnya build Docker image atau compile).
+* Opsional: push image ke container registry (DockerHub, GitHub Container Registry, Amazon ECR, dll).
+
+.GitHub/workflows/integrate.yml
+didalamnya terdapat beberapa event: pull requests, release dll
+
+```yml
+name: bebas
+
+on: 
+  pull requests:
+    branches: [master]
+
+jobs:
+  test_pull_requests:
+    runs-on: 
+      (nama-vm)
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm/ci
+      - run: npm test
+```
+
+pada workflow tersebut, akan berjalan ketika ada pull-request ke branch master
+nama-vm merupakan vm yang sudah kita atur pada github actions sebelumnya
+
+jobs dapat berisi beberapa job, secara default berjalan paralel, bisa tambahkan needs:[jobname] untuk menunggu job lain selesai
+apakah deploy otomatis dijalankan setelah integrate berhasil?
+.GitHub/workflows/deploy.yml
+
+### Deploy
+
+Deployment dapat dilakukan secara aktif atau pasif:
+
+* aktif ketika deployment server secara terus menerus mengecek ada tidaknya update dari registry.
+* pasif ketika cicd punya akses ke server dan menjalankan update server.
+
+#### Aktif
+
+* Push image baru ke registry (misalnya menggunakan webhook dari registry ke server).
+* Atau polling dari deployment agent (misalnya ArgoCD, FluxCD, atau script custom yang jalan tiap X menit).
+* Atau manual trigger (untuk Continuous Delivery, bukan Deployment otomatis).
+
+#### Pasif
+
 **Flow:**
 
 1. Developer push code ke GitHub.
